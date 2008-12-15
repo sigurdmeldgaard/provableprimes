@@ -1,7 +1,7 @@
 import random
 import sys
 
-
+#Computes x^exponent mod n
 def square_and_multiply(x, exponent, n):
     result = 1
     while exponent > 0:
@@ -11,7 +11,8 @@ def square_and_multiply(x, exponent, n):
         exponent = exponent >> 1
     return result
 
-
+#Returns if the given n in the base a is a prime
+#This is done t times for more precision.
 def millerrabin(n, t, a=None):
     k=0
     m = n - 1
@@ -49,7 +50,7 @@ smallprimes = [
     853, 857, 859, 863, 877, 881, 883, 887, 907, 911, 919, 929, 937, 941,
     947, 953, 967, 971, 977, 983, 991, 997]
 
-
+#
 def find_prime(k):
     while True:
         n = random.getrandbits(k-1)
@@ -59,12 +60,15 @@ def find_prime(k):
             if n % p == 0:
                 test = False
         if test:
-            test = millerrabin(n, 1)
+            test = millerrabin(n, 30)
         # probability of compositeness: < 1/2**(60)
         if test:
             return n
 
 
-find_prime(int(sys.argv[1]))
+print find_prime(int(sys.argv[1]))
+#If the following is enabled, you will get a computation on the time it took 
+#and in which method the most time was spend. 
+
 #import cProfile
 #cProfile.run('find_prime(1500)')
