@@ -45,7 +45,7 @@ $b^{(n-1)}  \equiv  1    \mod n$
 
 Denote the smallest exponent where the sequence:
 \[1, b^2, b^3 ... \mod n\]
-reaches $1$, the period of $b$ mod $n$ or $ord_p(b)$. 
+reaches $1$, the \emph{period} of $b$ mod $n$ or $ord_p(b)$. 
 
 We know that 
 \[b^{\phi(n)} \equiv 1 \mod n\]
@@ -62,7 +62,7 @@ Assume we know the factorization of $n-1 = q_1^{\beta_1}q_2^{\beta_2}\ldots q_r^
 Then we can check that:
 \[b^{(n-1)/q_i}\not\equiv 1 \mod n, i\in{1..r}\] If we raise $b$
 to a power not a multiple of $ord_p(b)$ it will be different from $1$,
-so $(n-1)/q_i\not|ord_p(b)$ for any $i$, And if that is true all
+so $(n-1)/q_i\not|ord_p(b)$ for any $i$, And if that is true, all
 factors of $n-1$ are not factors of $x$, and therefore $x=1$.
 %. Because only primes have
 %$\phi(n) = n-1$ 
@@ -83,9 +83,8 @@ is odd and the test succeeds for some base $b$ the smallest possible
 prime factor of $n$ is $2F+1$, and because $F>R$ $n=(2RF+1)<(2F+1)^2$,
 $n$ must be prime.
 
-As explained in \cite{Maurer} almost any base will work
-for showing the primality of $p$, the exact proportion of good bases
-is:
+As explained in \cite{Maurer} almost any base will work for showing
+the primality of a prime $p$, the exact proportion of good bases is:
 
 \[\phi(F)/F \geq 1-\sum^r_{j=1}1/q_j\]
 
@@ -96,7 +95,7 @@ determine that $y^2 - 4x$ is not 0 or a perfect square, we know that n
 is prime if $F$ is just greater or equal to $\sqrt[3]{n}$. However, this
 comes with the cost of a slightly distorted uniformity.
 
-To ensure that the primes are generated reasonably uniformly the size
+To ensure that the primes are generated reasonably uniformly, the size
 of the smaller primes generated in the recursive calls must be chosen
 properly.
 
@@ -105,8 +104,8 @@ from the distribution of the relative size of the largest factor of a
 random integer $F$. And it is argued that the conditional distribution
 given that $2F+1$ is prime is almost the same.
 
-Also it is noted that if $F$ has only one prime factor, we still
-choose from among 10 \% of all primes.
+Also it is noted that if $F=q$ is itself prime, we still
+choose from among ca. 10 \% of all primes.
 
 The asymptotic estimated running time of finding a $k$-bit prime with the
 asymptotically best multi-precision algorithms is:
@@ -170,14 +169,14 @@ criterion, this quickly weeds out most of the composites.
 
 For random input we use Pythons built-in Mersenne Twister
 implementation, which has fine statistical properties, but is
-unsuitable for cryptographic use, this must be changed before the
+unsuitable for cryptographic use. This must be changed before the
 implementation can be used for such purposes.
 
 We implemented the algorithm in Python (mauer.py), using the built-in
 multi-precision integers.  The speed loss due to interpretation is
 negligible in this case, as most of the time is spent doing modular
 exponentiations. On the other hand a faster MP-library (for example
-gmp is possibly a little faster for large bitsizes) will give us
+gmp is possibly a little faster for large bitsizes) would give us
 savings.
 
 We also implemented the Miller-Rabin primality test (millerrabin.py),
@@ -196,7 +195,7 @@ The program is run as: \verb|python mauer.py 1024| for $k=1024$.
 We have timed 10 runs of each algorithm with different bitlengths (in
 the interval 100 to 1400 bits) on a 2.4 GHz Intel core 2 Duo running
 Mac OS X, and are giving the average running times in seconds,
-measured in CPU-time in user-mode as given by the unix tool
+measured in CPU-time in user-mode as given by the Unix tool
 \verb|time|. 
 
 There are big deviations from the average, this is due to the
