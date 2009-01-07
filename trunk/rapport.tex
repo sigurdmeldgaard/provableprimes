@@ -187,7 +187,7 @@ The program is run as: \verb|python mauer.py 1024| for $k=1024$.
 \section{Results}
 \begin{figure}[h]
   \centering
-  %\includegraphics{plot.pdf}
+  \includegraphics{plot.pdf}
   \caption{Timings of the two prime construction methods}
   \label{fig:timings}
 \end{figure}
@@ -214,14 +214,10 @@ several bases to make the probability of accepting a composite number
 negligibly small.
 \section{Conclusion}
 Generating provable primes for public key parameters is certainly
-practically possible. But Miller-Rabin test is easier to implement and
+practically possible. But the Miller-Rabin test is easier to implement and
 can construct pseudoprimes with very high certainty in ca. the same
 time. And these numbers will be distributed truly uniformly among all
-primes.
-
-
+primes. 
 \bibliography{rapport}{}
 \bibliographystyle{elsart-harv}
-
-
 \end{document}
